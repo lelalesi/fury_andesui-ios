@@ -12,7 +12,7 @@ class AndesCarouselAbstractView: UIView, AndesCarouselView {
     // MARK: - Xib Outlets
 
     @IBOutlet var containerView: UIView!
-    @IBOutlet var collectionView: UIView!
+    @IBOutlet var collectionView: UIColl!
 
     init() {
         super.init(frame: .zero)
