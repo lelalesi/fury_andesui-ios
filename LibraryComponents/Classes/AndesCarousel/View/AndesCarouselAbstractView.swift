@@ -7,7 +7,7 @@
 
 import Foundation
 
-class AndesCarouselAbstractView: UIView, AndesCarouselView {
+class AndesCarouselAbstractView: UIView {
 
     // MARK: - Xib Outlets
 
