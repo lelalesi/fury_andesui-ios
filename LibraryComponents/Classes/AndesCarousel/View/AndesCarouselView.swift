@@ -12,6 +12,6 @@ import Foundation
  */
 
 protocol AndesCarouselView: UIView {
-    var delegate: AndesCardViewDelegate? { get set }
-    func update(withConfig config: AndesCardViewConfig)
+    var delegate: AndesCarouselViewDelegate? { get set }
+    func update(withConfig config: AndesCarouselViewConfig)
 }

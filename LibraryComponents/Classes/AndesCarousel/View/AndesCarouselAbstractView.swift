@@ -7,7 +7,9 @@
 
 import Foundation
 
-class AndesCarouselAbstractView: UIView {
+class AndesCarouselAbstractView: UIView, AndesCarouselView {
+
+    weak var delegate: AndesCarouselViewDelegate?
 
     // MARK: - Xib Outlets
 
@@ -16,16 +18,16 @@ class AndesCarouselAbstractView: UIView {
 
     // MARK: - View initialization
 
-    private let views: [UIView]
+    var config: AndesCarouselViewConfig
 
-    init(views: [UIView]) {
-        self.views = views
+    init(withConfig config: AndesCarouselViewConfig) {
+        self.config = config
         super.init(frame: .zero)
         setup()
     }
 
     required init?(coder: NSCoder) {
-        self.views = []
+        self.config = AndesCarouselViewConfig()
         super.init(coder: coder)
         setup()
     }
@@ -39,18 +41,36 @@ class AndesCarouselAbstractView: UIView {
         collectionView.delegate = self
     }
 
+    // MARK: - View configuration
+
+    /// Override this method on Carousel View to setup its unique components
+    func updateView() {
+        collectionView.reloadData()
+    }
+
+    func update(withConfig config: AndesCarouselViewConfig) {
+        self.config = config
+        updateView()
+    }
+
 }
 
 // MARK: - UICollectionViewDataSource
 
 extension AndesCarouselAbstractView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return views.count
+        return config.views.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let view = views[indexPath.row]
-        return UICollectionViewCell()
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AndesCarouselViewCell.identifier,
+                                                            for: indexPath) as? AndesCarouselViewCell else {
+            return UICollectionViewCell()
+        }
+
+        cell.containerView = config.views[indexPath.row]
+
+        return cell
     }
 }
 
@@ -58,6 +78,6 @@ extension AndesCarouselAbstractView: UICollectionViewDataSource {
 
 extension AndesCarouselAbstractView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-
+        delegate?.andesCarousel(didSelectView: config.views[indexPath.row])
     }
 }

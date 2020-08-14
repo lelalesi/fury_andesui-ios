@@ -8,5 +8,5 @@
 import Foundation
 
 protocol AndesCarouselViewDelegate: AnyObject {
-    func andesCarousel(_ carousel: AndesCarousel, didSelectView: UIView)
+    func andesCarousel(didSelectView: UIView)
 }

@@ -13,14 +13,9 @@ import UIKit
 
     // MARK: - User properties
 
-    /// Sets the internal card view of the AndesCard
+    /// Sets the internal views of the AndesCarousel
     public var views: [UIView] = [] {
         didSet { self.updateContentView() }
-    }
-
-    private func updateContentView() {
-        //let config = AndesCardViewConfigFactory.provideConfig(for: self)
-        //contentView.update(withConfig: config)
     }
 
     // MARK: - Initialization
@@ -50,23 +45,27 @@ import UIKit
 
     /// Should return a view depending on which carousel variant is selected
     private func provideView() -> AndesCarouselView {
-        //let config = AndesCardViewConfigFactory.provideConfig(for: self)
-
-        return AndesCarouselDefaultView(views: [])
+        let config = AndesCarouselViewConfigFactory.provideConfig(for: self)
+        return AndesCarouselDefaultView(withConfig: config)
     }
 
     private func drawContentView(with newView: AndesCarouselView) {
-        self.contentView = newView
+        contentView = newView
         contentView.delegate = self
         addSubview(contentView)
         contentView.pinToSuperview()
+    }
+
+    private func updateContentView() {
+        let config = AndesCarouselViewConfigFactory.provideConfig(for: self)
+        contentView.update(withConfig: config)
     }
 
 }
 
 // MARK: - AndesCarouselViewDelegate
 extension AndesCarousel: AndesCarouselViewDelegate {
-    func andesCarousel(_ carousel: AndesCarousel, didSelectView: UIView) {
+    func andesCarousel(didSelectView: UIView) {
 
     }
 }
