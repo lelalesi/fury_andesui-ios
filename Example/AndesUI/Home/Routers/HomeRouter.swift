@@ -21,6 +21,7 @@ protocol HomeRouter: NSObject {
     func routeSnackbar()
     func routeCard()
     func routeToThumbnail()
+    func routeCarousel()
 }
 
 class HomeAppRouter: NSObject {
@@ -38,6 +39,7 @@ class HomeAppRouter: NSObject {
     let snackbarRouter = SnackbarAppRouter()
     let cardRouter = CardAppRouter()
     let thumbnailRouter = ThumbnailAppRouter()
+    let carouselRouter = CarouselAppRouter()
 }
 
 extension HomeAppRouter: HomeRouter {
@@ -93,6 +95,10 @@ extension HomeAppRouter: HomeRouter {
 
     func routeToThumbnail() {
 	thumbnailRouter.route(from: view)
+    }
+
+    func routeCarousel() {
+        carouselRouter.route(from: view)
     }
 
 }

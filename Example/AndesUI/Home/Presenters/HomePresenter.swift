@@ -20,6 +20,7 @@ protocol HomePresenter: NSObject {
     func presentSnackbar()
     func presentCard()
     func presentThumbnail()
+    func presentCarousel()
 }
 
 class HomeViewPresenter: NSObject {
@@ -73,5 +74,9 @@ extension HomeViewPresenter: HomePresenter {
 
     func presentThumbnail() {
 	router.routeToThumbnail()
+    }
+
+    func presentCarousel() {
+        router.routeCarousel()
     }
 }

@@ -18,8 +18,8 @@ class CarouselAppRouter: NSObject {
 
 extension CarouselAppRouter: CarouselRouter {
     func route(from: UIViewController) {
-        view = AndesShowcasePageViewController(controllers: [])
-        view.title = "AndesCard"
+        view = AndesShowcasePageViewController(controllers: [CarouselViewController(), CarouselObjCViewController()])
+        view.title = "AndesCarousel"
         from.navigationController?.pushViewController(view, animated: true)
     }
 }

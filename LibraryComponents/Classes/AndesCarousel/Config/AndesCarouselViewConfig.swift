@@ -10,13 +10,13 @@ import Foundation
 /// used to define the ui of internal AndesCarousel views
 
 struct AndesCarouselViewConfig {
-    let views: [UIView]
+    let itemView: UIView
 
-    init(views: [UIView]) {
-        self.views = views
+    init(itemView: UIView) {
+        self.itemView = itemView
     }
 
     init() {
-        self.views = []
+        self.itemView = UIView()
     }
 }

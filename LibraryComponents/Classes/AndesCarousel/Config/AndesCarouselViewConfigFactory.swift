@@ -9,7 +9,7 @@ import Foundation
 
 class AndesCarouselViewConfigFactory {
     static func provideConfig(for carousel: AndesCarousel) -> AndesCarouselViewConfig {
-        let views = carousel.views
-        return AndesCarouselViewConfig(views: views)
+        let itemView = carousel.itemView
+        return AndesCarouselViewConfig(itemView: itemView)
     }
 }

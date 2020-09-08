@@ -14,7 +14,7 @@ import UIKit
     // MARK: - User properties
 
     /// Sets the internal views of the AndesCarousel
-    public var views: [UIView] = [] {
+    public var itemView = UIView() {
         didSet { self.updateContentView() }
     }
 
@@ -29,9 +29,9 @@ import UIKit
         setup()
     }
 
-    @objc public init(views: [UIView]) {
+    @objc public init(itemView: UIView) {
         super.init(frame: .zero)
-        self.views = views
+        self.itemView = itemView
         setup()
     }
 
@@ -51,7 +51,7 @@ import UIKit
 
     private func drawContentView(with newView: AndesCarouselView) {
         contentView = newView
-        contentView.delegate = self
+        //contentView.delegate = self
         addSubview(contentView)
         contentView.pinToSuperview()
     }
@@ -61,11 +61,4 @@ import UIKit
         contentView.update(withConfig: config)
     }
 
-}
-
-// MARK: - AndesCarouselViewDelegate
-extension AndesCarousel: AndesCarouselViewDelegate {
-    func andesCarousel(didSelectView: UIView) {
-
-    }
 }

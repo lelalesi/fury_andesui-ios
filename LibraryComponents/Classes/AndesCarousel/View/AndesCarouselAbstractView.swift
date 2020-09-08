@@ -39,6 +39,8 @@ class AndesCarouselAbstractView: UIView, AndesCarouselView {
     private func setup() {
         collectionView.dataSource = self
         collectionView.delegate = self
+        let nib = UINib(nibName: AndesCarouselViewCell.identifier, bundle: AndesBundle.bundle())
+        collectionView.register(nib, forCellWithReuseIdentifier: AndesCarouselViewCell.identifier)
     }
 
     // MARK: - View configuration
@@ -59,7 +61,7 @@ class AndesCarouselAbstractView: UIView, AndesCarouselView {
 
 extension AndesCarouselAbstractView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return config.views.count
+        return 1
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -68,7 +70,7 @@ extension AndesCarouselAbstractView: UICollectionViewDataSource {
             return UICollectionViewCell()
         }
 
-        cell.containerView = config.views[indexPath.row]
+        cell.containerView = delegate?.andesCarousel(cellForItemAt: indexPath)
 
         return cell
     }
@@ -78,6 +80,14 @@ extension AndesCarouselAbstractView: UICollectionViewDataSource {
 
 extension AndesCarouselAbstractView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        delegate?.andesCarousel(didSelectView: config.views[indexPath.row])
+        delegate?.andesCarousel(didSelectItemAt: indexPath)
+    }
+}
+
+// MARK: - UICollectionViewDelegateFlowLayout
+
+extension AndesCarouselAbstractView: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: UIScreen.main.bounds.width, height: 288.0)
     }
 }

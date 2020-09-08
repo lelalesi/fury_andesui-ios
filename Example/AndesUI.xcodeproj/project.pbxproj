@@ -27,6 +27,8 @@
 		63DFF10024E2EDEC00D66173 /* CarouselRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DFF0FF24E2EDEC00D66173 /* CarouselRouter.swift */; };
 		63DFF10424E2F1E000D66173 /* CarouselViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63DFF10224E2F1E000D66173 /* CarouselViewController.swift */; };
 		63DFF10524E2F1E000D66173 /* CarouselViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63DFF10324E2F1E000D66173 /* CarouselViewController.xib */; };
+		63DFF13A24EEB52000D66173 /* CarouselObjCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 63DFF13824EEB52000D66173 /* CarouselObjCViewController.m */; };
+		63DFF13B24EEB52000D66173 /* CarouselObjCViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63DFF13924EEB52000D66173 /* CarouselObjCViewController.xib */; };
 		6A186A6823AC0FBB00420556 /* ButtonsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A186A6423AC0FBB00420556 /* ButtonsRouter.swift */; };
 		6A186A6923AC0FBB00420556 /* ButtonsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A186A6623AC0FBB00420556 /* ButtonsViewController.swift */; };
 		6A186A6A23AC0FBB00420556 /* ButtonsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A186A6723AC0FBB00420556 /* ButtonsViewController.xib */; };
@@ -162,6 +164,9 @@
 		63DFF0FF24E2EDEC00D66173 /* CarouselRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselRouter.swift; sourceTree = "<group>"; };
 		63DFF10224E2F1E000D66173 /* CarouselViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarouselViewController.swift; sourceTree = "<group>"; };
 		63DFF10324E2F1E000D66173 /* CarouselViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CarouselViewController.xib; sourceTree = "<group>"; };
+		63DFF13724EEB52000D66173 /* CarouselObjCViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CarouselObjCViewController.h; sourceTree = "<group>"; };
+		63DFF13824EEB52000D66173 /* CarouselObjCViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CarouselObjCViewController.m; sourceTree = "<group>"; };
+		63DFF13924EEB52000D66173 /* CarouselObjCViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CarouselObjCViewController.xib; sourceTree = "<group>"; };
 		6A186A6423AC0FBB00420556 /* ButtonsRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonsRouter.swift; sourceTree = "<group>"; };
 		6A186A6623AC0FBB00420556 /* ButtonsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonsViewController.swift; sourceTree = "<group>"; };
 		6A186A6723AC0FBB00420556 /* ButtonsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ButtonsViewController.xib; sourceTree = "<group>"; };
@@ -469,6 +474,9 @@
 			children = (
 				63DFF10224E2F1E000D66173 /* CarouselViewController.swift */,
 				63DFF10324E2F1E000D66173 /* CarouselViewController.xib */,
+				63DFF13724EEB52000D66173 /* CarouselObjCViewController.h */,
+				63DFF13824EEB52000D66173 /* CarouselObjCViewController.m */,
+				63DFF13924EEB52000D66173 /* CarouselObjCViewController.xib */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -899,6 +907,7 @@
 				90530B12242BFD15005E056A /* BadgeViewController.xib in Resources */,
 				023ADCED24ACD4050076C3F3 /* ThumbnailObjCViewController.xib in Resources */,
 				90F47820243534F0001CEC90 /* BadgeObjCViewController.xib in Resources */,
+				63DFF13B24EEB52000D66173 /* CarouselObjCViewController.xib in Resources */,
 				6A186A6A23AC0FBB00420556 /* ButtonsViewController.xib in Resources */,
 				9C9B5A9023ECEED40007234B /* WhatsNewViewController.xib in Resources */,
 				90530B0C242BFAA7005E056A /* AndesBadgeShowcaseViewController.xib in Resources */,
@@ -1057,6 +1066,7 @@
 				9C9B5A8F23ECEED40007234B /* WhatsNewViewController.swift in Sources */,
 				86A1E3112481E56300B59D1D /* TagObjCViewController.m in Sources */,
 				90530B07242BF9ED005E056A /* BadgesRouter.swift in Sources */,
+				63DFF13A24EEB52000D66173 /* CarouselObjCViewController.m in Sources */,
 				8617BD1F2499B6570071319C /* SnackbarViewController.swift in Sources */,
 				023ADCEC24ACD4050076C3F3 /* ThumbnailObjCViewController.m in Sources */,
 				6A3C9CFD23C692B6007D0C8B /* HomeViewController.swift in Sources */,
