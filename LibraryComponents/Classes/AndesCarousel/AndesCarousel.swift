@@ -14,7 +14,12 @@ import UIKit
     // MARK: - User properties
 
     /// Sets the internal views of the AndesCarousel
-    public var itemView = UIView() {
+    @objc public var itemView = UIView() {
+        didSet { self.updateContentView() }
+    }
+
+    /// Sets the padding of the AndesCarousel
+    @objc public var padding: AndesCarouselPadding = .small {
         didSet { self.updateContentView() }
     }
 
@@ -29,9 +34,10 @@ import UIKit
         setup()
     }
 
-    @objc public init(itemView: UIView) {
+    @objc public init(itemView: UIView, padding: AndesCarouselPadding = .small) {
         super.init(frame: .zero)
         self.itemView = itemView
+        self.padding = padding
         setup()
     }
 
@@ -59,6 +65,21 @@ import UIKit
     private func updateContentView() {
         let config = AndesCarouselViewConfigFactory.provideConfig(for: self)
         contentView.update(withConfig: config)
+    }
+
+}
+
+// MARK: - IB Interface
+public extension AndesCarousel {
+
+    @available(*, unavailable, message: "This property is reserved for Interface Builder. Use 'padding' instead.")
+    @IBInspectable var ibPadding: String {
+        set(val) {
+            self.padding = AndesCarouselPadding.checkValidEnum(property: "IB padding", key: val)
+        }
+        get {
+            return self.padding.toString()
+        }
     }
 
 }
