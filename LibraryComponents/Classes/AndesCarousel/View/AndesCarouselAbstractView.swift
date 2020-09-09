@@ -14,7 +14,7 @@ class AndesCarouselAbstractView: UIView, AndesCarouselView {
     // MARK: - Xib Outlets
 
     @IBOutlet var containerView: UIView!
-    @IBOutlet var collectionView: UICollectionView!
+    @IBOutlet weak var collectionView: UICollectionView!
 
     // MARK: - View initialization
 
@@ -37,10 +37,17 @@ class AndesCarouselAbstractView: UIView, AndesCarouselView {
     }
 
     private func setup() {
+        loadNib()
+        translatesAutoresizingMaskIntoConstraints = false
+        addSubview(containerView)
+        containerView.pinToSuperview()
+        containerView.clipsToBounds = true
+
         collectionView.dataSource = self
         collectionView.delegate = self
-        let nib = UINib(nibName: AndesCarouselViewCell.identifier, bundle: AndesBundle.bundle())
-        collectionView.register(nib, forCellWithReuseIdentifier: AndesCarouselViewCell.identifier)
+        collectionView.register(AndesCarouselViewCell.self, forCellWithReuseIdentifier: AndesCarouselViewCell.identifier)
+
+        updateView()
     }
 
     // MARK: - View configuration
@@ -61,7 +68,7 @@ class AndesCarouselAbstractView: UIView, AndesCarouselView {
 
 extension AndesCarouselAbstractView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 1
+        return 10
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -70,7 +77,7 @@ extension AndesCarouselAbstractView: UICollectionViewDataSource {
             return UICollectionViewCell()
         }
 
-        cell.containerView = delegate?.andesCarousel(cellForItemAt: indexPath)
+        cell.setView(view: config.itemView)
 
         return cell
     }

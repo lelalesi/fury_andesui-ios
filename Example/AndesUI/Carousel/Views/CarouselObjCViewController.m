@@ -28,7 +28,7 @@
     self.stackView.translatesAutoresizingMaskIntoConstraints = false;
 
     // Basic carousel
-    AndesCarousel *carousel = [[AndesCarousel alloc] initWithItemView:[self buildView]];
+    AndesCarousel *carousel = [[AndesCarousel alloc] initWithItemView:[self buildView] padding:AndesCarouselPaddingSmall isCenter:true];
 
     [self.stackView addArrangedSubview:carousel];
 
@@ -51,7 +51,7 @@
     textLbl.text = @"Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
     textLbl.numberOfLines = 0;
     
-    AndesFontStyle * font = [[AndesFontStyle alloc] initWithTextColor:AndesStyleSheetManager.styleSheet.textColorPrimary
+    AndesFontStyle *font = [[AndesFontStyle alloc] initWithTextColor:AndesStyleSheetManager.styleSheet.textColorPrimary
                                                                  font:[AndesStyleSheetManager.styleSheet regularSystemFontWithSize:16]
                                                           lineSpacing:1];
     [textLbl setAndesStyleWithStyle:font];

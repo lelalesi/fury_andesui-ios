@@ -11,12 +11,18 @@ import Foundation
 
 struct AndesCarouselViewConfig {
     let itemView: UIView
+    let padding: UInt
+    let isCenter: Bool
 
-    init(itemView: UIView) {
+    init(itemView: UIView, padding: UInt, isCenter: Bool) {
         self.itemView = itemView
+        self.padding = padding
+        self.isCenter = isCenter
     }
 
     init() {
         self.itemView = UIView()
+        self.padding = 12
+        self.isCenter = true
     }
 }

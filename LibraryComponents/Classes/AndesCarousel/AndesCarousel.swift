@@ -10,6 +10,7 @@ import UIKit
 @objc public class AndesCarousel: UIView {
 
     var contentView: AndesCarouselView!
+    weak var delegate: AndesCarouselViewDelegate?
 
     // MARK: - User properties
 
@@ -20,6 +21,11 @@ import UIKit
 
     /// Sets the padding of the AndesCarousel
     @objc public var padding: AndesCarouselPadding = .small {
+        didSet { self.updateContentView() }
+    }
+
+    /// Sets the padding of the AndesCarousel
+    @objc public var isCenter: Bool = true {
         didSet { self.updateContentView() }
     }
 
@@ -34,10 +40,11 @@ import UIKit
         setup()
     }
 
-    @objc public init(itemView: UIView, padding: AndesCarouselPadding = .small) {
+    @objc public init(itemView: UIView, padding: AndesCarouselPadding = .small, isCenter: Bool = true) {
         super.init(frame: .zero)
         self.itemView = itemView
         self.padding = padding
+        self.isCenter = isCenter
         setup()
     }
 
