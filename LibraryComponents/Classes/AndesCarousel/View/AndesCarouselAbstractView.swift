@@ -77,7 +77,8 @@ extension AndesCarouselAbstractView: UICollectionViewDataSource {
             return UICollectionViewCell()
         }
 
-        cell.setView(view: config.itemView)
+        let itemView = delegate?.andesCarousel(cellForItemAt: indexPath) ?? UIView()
+        cell.setView(view: itemView)
 
         return cell
     }

@@ -9,12 +9,9 @@ import Foundation
 
 class AndesCarouselViewConfigFactory {
     static func provideConfig(for carousel: AndesCarousel) -> AndesCarouselViewConfig {
-        let itemView = carousel.itemView
         let padding = AndesCarouselPaddingFactory.provide(carousel.padding)
         let isCenter = carousel.isCenter
 
-        return AndesCarouselViewConfig(itemView: itemView,
-                                       padding: padding.paddingSize,
-                                       isCenter: isCenter)
+        return AndesCarouselViewConfig(padding: padding.paddingSize, isCenter: isCenter)
     }
 }

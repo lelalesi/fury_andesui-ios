@@ -28,10 +28,10 @@
     self.stackView.translatesAutoresizingMaskIntoConstraints = false;
 
     // Basic carousel
-    AndesCarousel *carousel = [[AndesCarousel alloc] initWithItemView:[self buildView] padding:AndesCarouselPaddingSmall isCenter:true];
+    AndesCarousel *carousel = [[AndesCarousel alloc] initWithPadding:AndesCarouselPaddingSmall isCenter:true];
+    [carousel setDelegate:self];
 
     [self.stackView addArrangedSubview:carousel];
-
 }
 
 - (UIView *)buildView {
@@ -61,6 +61,14 @@
     stackView.spacing = 30;
     
     return stackView;
+}
+
+- (UIView * _Nonnull)andesCarouselWithCellForItemAt:(NSIndexPath * _Nonnull)indexPath {
+    return [self buildView];
+}
+
+- (void)andesCarouselWithDidSelectItemAt:(NSIndexPath * _Nonnull)indexPath {
+    
 }
 
 @end

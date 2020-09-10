@@ -10,14 +10,9 @@ import UIKit
 @objc public class AndesCarousel: UIView {
 
     var contentView: AndesCarouselView!
-    weak var delegate: AndesCarouselViewDelegate?
+    @objc public weak var delegate: AndesCarouselViewDelegate?
 
     // MARK: - User properties
-
-    /// Sets the internal views of the AndesCarousel
-    @objc public var itemView = UIView() {
-        didSet { self.updateContentView() }
-    }
 
     /// Sets the padding of the AndesCarousel
     @objc public var padding: AndesCarouselPadding = .small {
@@ -40,9 +35,8 @@ import UIKit
         setup()
     }
 
-    @objc public init(itemView: UIView, padding: AndesCarouselPadding = .small, isCenter: Bool = true) {
+    @objc public init(padding: AndesCarouselPadding = .small, isCenter: Bool = true) {
         super.init(frame: .zero)
-        self.itemView = itemView
         self.padding = padding
         self.isCenter = isCenter
         setup()
@@ -64,7 +58,7 @@ import UIKit
 
     private func drawContentView(with newView: AndesCarouselView) {
         contentView = newView
-        //contentView.delegate = self
+        contentView.delegate = self
         addSubview(contentView)
         contentView.pinToSuperview()
     }
@@ -87,6 +81,20 @@ public extension AndesCarousel {
         get {
             return self.padding.toString()
         }
+    }
+
+}
+
+// MARK: - AndesCarouselViewDelegate
+
+extension AndesCarousel: AndesCarouselViewDelegate {
+
+    public func andesCarousel(cellForItemAt indexPath: IndexPath) -> UIView {
+        delegate?.andesCarousel(cellForItemAt: indexPath) ?? UIView()
+    }
+
+    public func andesCarousel(didSelectItemAt indexPath: IndexPath) {
+        delegate?.andesCarousel(didSelectItemAt: indexPath)
     }
 
 }

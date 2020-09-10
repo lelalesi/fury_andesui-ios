@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol AndesCarouselViewDelegate: AnyObject {
-    func andesCarousel(cellForItemAt indexPath: IndexPath) -> UIView
-    func andesCarousel(didSelectItemAt indexPath: IndexPath)
+@objc public protocol AndesCarouselViewDelegate: AnyObject {
+    @objc func andesCarousel(cellForItemAt indexPath: IndexPath) -> UIView
+    @objc func andesCarousel(didSelectItemAt indexPath: IndexPath)
 }
