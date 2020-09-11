@@ -22,10 +22,14 @@ class AndesCarouselViewCell: UICollectionViewCell {
     }
 
     public func setView(view: UIView) {
-        containerView.removeFromSuperview()
-        containerView = view
-        addSubview(containerView)
-        containerView.pinToSuperview()
+        if view.isDescendant(of: self) { view.removeFromSuperview() }
+        addSubview(view)
+        view.pinToSuperview()
+
+//        containerView.removeFromSuperview()
+//        containerView = view
+//        addSubview(containerView)
+//        containerView.pinToSuperview()
     }
 
 }

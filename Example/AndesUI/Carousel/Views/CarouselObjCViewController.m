@@ -32,35 +32,45 @@
     [carousel setDelegate:self];
 
     [self.stackView addArrangedSubview:carousel];
+
+    NSArray *constraints = @[
+        [carousel.heightAnchor constraintEqualToConstant:100],
+        [carousel.widthAnchor constraintEqualToConstant:400],
+    ];
+    [NSLayoutConstraint activateConstraints: constraints];
 }
 
 - (UIView *)buildView {
     UIImageView *imageView = [[UIImageView alloc] initWithImage: [UIImage imageNamed:@"item-example" inBundle:nil compatibleWithTraitCollection:nil]];
     imageView.translatesAutoresizingMaskIntoConstraints = false;
-    
+
     NSArray *constraints = @[
         [imageView.heightAnchor constraintEqualToConstant:80],
         [imageView.widthAnchor constraintEqualToConstant:80],
     ];
     [NSLayoutConstraint activateConstraints: constraints];
-    
+
     imageView.layer.cornerRadius = 40;
     imageView.clipsToBounds = YES;
-    
+
     UILabel *textLbl = [[UILabel alloc] init];
     textLbl.text = @"Lorem ipsum dolor sit amet, consectetur adipiscing elit.";
     textLbl.numberOfLines = 0;
-    
+
     AndesFontStyle *font = [[AndesFontStyle alloc] initWithTextColor:AndesStyleSheetManager.styleSheet.textColorPrimary
                                                                  font:[AndesStyleSheetManager.styleSheet regularSystemFontWithSize:16]
                                                           lineSpacing:1];
     [textLbl setAndesStyleWithStyle:font];
-    
+
     UIStackView *stackView = [[UIStackView alloc] initWithArrangedSubviews:@[imageView, textLbl]];
     stackView.axis = UILayoutConstraintAxisHorizontal;
     stackView.spacing = 30;
-    
+
     return stackView;
+}
+
+- (NSInteger)numberOfItems {
+    return 10;
 }
 
 - (UIView * _Nonnull)andesCarouselWithCellForItemAt:(NSIndexPath * _Nonnull)indexPath {
