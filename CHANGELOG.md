@@ -1,6 +1,13 @@
-## Unpublished
+## v3.9.0
+### 🚀 Features
+- New component: AndesCoachMark | Authors: [@jdbandoniml](https://github.com/jdbandoniml)
+### 🛠 Bug fixes
+- AndesCard: The provided view now support tappable actions | Authors: [@Mobile-Arq](https://github.com/mercadolibre/fury_andesui-ios)
+
+## v3.8.0
 ### 🚀 Features
 - New component: AndesCard | Authors: [@Mobile-Arq](https://github.com/mercadolibre/fury_andesui-ios)
+- Andes Message: Added capability to show Links into the message body | Authors: [@magustingil](https://github.com/magustingil)
 
 ## v3.7.0
 ### 🚀 Features

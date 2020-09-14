@@ -14,3 +14,4 @@
 #import "CardObjCViewController.h"
 #import "ThumbnailObjCViewController.h"
 #import "CarouselObjCViewController.h"
+#import "CoachmarkObjCViewController.h"
