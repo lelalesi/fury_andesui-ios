@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CarouselObjCViewController">
+            <connections>
+                <outlet property="stackView" destination="hN9-PE-gdN" id="S9o-y5-BnW"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mek-vM-tft">
+                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="hN9-PE-gdN">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
+                        </stackView>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="hN9-PE-gdN" secondAttribute="trailing" id="6Gz-sG-WWh"/>
+                        <constraint firstItem="hN9-PE-gdN" firstAttribute="top" secondItem="mek-vM-tft" secondAttribute="top" id="7up-Zn-YGQ"/>
+                        <constraint firstItem="hN9-PE-gdN" firstAttribute="leading" secondItem="mek-vM-tft" secondAttribute="leading" id="bYo-zn-cZ0"/>
+                        <constraint firstAttribute="bottom" secondItem="hN9-PE-gdN" secondAttribute="bottom" id="gf3-mE-JAj"/>
+                    </constraints>
+                    <viewLayoutGuide key="contentLayoutGuide" id="okM-AE-SbA"/>
+                    <viewLayoutGuide key="frameLayoutGuide" id="NKJ-pU-1kq"/>
+                </scrollView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="mek-vM-tft" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" id="3ut-u3-dcb"/>
+                <constraint firstItem="mek-vM-tft" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="7fE-vl-2i0"/>
+                <constraint firstItem="hN9-PE-gdN" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" multiplier="0.912946" priority="250" id="9KQ-8X-AAL"/>
+                <constraint firstItem="mek-vM-tft" firstAttribute="trailing" secondItem="Q5M-cg-NOt" secondAttribute="trailing" id="DQ9-YI-BTQ"/>
+                <constraint firstItem="hN9-PE-gdN" firstAttribute="width" secondItem="i5M-Pr-FkT" secondAttribute="width" id="Ncu-8h-fOv"/>
+                <constraint firstItem="mek-vM-tft" firstAttribute="bottom" secondItem="Q5M-cg-NOt" secondAttribute="bottom" id="Qzr-yg-xdZ"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
+            <point key="canvasLocation" x="137.68115942028987" y="153.34821428571428"/>
+        </view>
+    </objects>
+</document>

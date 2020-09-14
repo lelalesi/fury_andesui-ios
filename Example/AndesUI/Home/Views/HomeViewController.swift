@@ -32,7 +32,8 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var specsButton: AndesButton!
     @IBOutlet weak var contributingButton: AndesButton!
 	@IBOutlet weak var thumbnailBtn: AndesButton!
-	@IBOutlet weak var showcaseLabel: UILabel!
+    @IBOutlet weak var carouselButton: AndesButton!
+    @IBOutlet weak var showcaseLabel: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -120,6 +121,10 @@ class HomeViewController: UIViewController {
 
     @IBAction func goToThumbnailTapped(_ sender: Any) {
 	presenter.presentThumbnail()
+    }
+
+    @IBAction func carouselButtonTapped(_ sender: Any) {
+        presenter.presentCarousel()
     }
 }
 
