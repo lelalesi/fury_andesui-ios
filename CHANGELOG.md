@@ -1,3 +1,7 @@
+## (to be published)
+### 🛠 Bug fixes
+- AndesMessage body `lineHeight` changed  | Authors: [@lelalesi](https://github.com/lelalesi)
+
 ## v3.9.0
 ### 🚀 Features
 - New component: AndesCoachMark | Authors: [@jdbandoniml](https://github.com/jdbandoniml)
