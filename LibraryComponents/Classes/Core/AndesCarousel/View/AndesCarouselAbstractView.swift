@@ -38,22 +38,54 @@ class AndesCarouselAbstractView: UIView, AndesCarouselView {
 
     private func setup() {
         loadNib()
+
         translatesAutoresizingMaskIntoConstraints = false
         addSubview(containerView)
         containerView.pinToSuperview()
         containerView.clipsToBounds = true
+        setupCollectionView()
+        updateView()
+    }
 
+    private func setupCollectionView() {
+        collectionView.backgroundColor = .blue
         collectionView.dataSource = self
         collectionView.delegate = self
-        collectionView.register(AndesCarouselViewCell.self, forCellWithReuseIdentifier: AndesCarouselViewCell.identifier)
+        collectionView.decelerationRate = UIScrollView.DecelerationRate.fast
+        collectionView.showsHorizontalScrollIndicator = false
+        collectionView.showsVerticalScrollIndicator = false
+        collectionView.isPagingEnabled = false
+        registerCells(ids: [AndesCarouselViewCell.identifier])
+        setupCollectionViewLayout()
+    }
 
-        updateView()
+    private func setupCollectionViewLayout() {
+
+        let cellXInset: CGFloat = 20
+
+        let cellWidth: CGFloat = (collectionView.frame.width - 2 * cellXInset)
+        let cellHeight: CGFloat = collectionView.frame.height
+
+        let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+        layout.itemSize = CGSize(width: cellWidth, height: cellHeight)
+
+        layout.minimumLineSpacing = 12.0
+        layout.scrollDirection = .horizontal
+
+    }
+
+    private func registerCells(ids: [String]) {
+        for id in ids {
+            collectionView.register(AndesCarouselViewCell.self, forCellWithReuseIdentifier: id)
+        }
     }
 
     // MARK: - View configuration
 
     /// Override this method on Carousel View to setup its unique components
     func updateView() {
+        #warning("Esto es ineficiente, actualizar solamente layout creo que con el `collectionView.collectionViewLayout.invalidateLayout()`")
+//        collectionView.collectionViewLayout.invalidateLayout()
         collectionView.reloadData()
     }
 
@@ -68,7 +100,7 @@ class AndesCarouselAbstractView: UIView, AndesCarouselView {
 
 extension AndesCarouselAbstractView: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return delegate?.numberOfItems() ?? 0
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -87,16 +119,24 @@ extension AndesCarouselAbstractView: UICollectionViewDataSource {
 
 // MARK: - UICollectionViewDelegate
 
-extension AndesCarouselAbstractView: UICollectionViewDelegate {
+extension AndesCarouselAbstractView: UICollectionViewDelegate, UIScrollViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         delegate?.andesCarousel(didSelectItemAt: indexPath)
     }
-}
 
-// MARK: - UICollectionViewDelegateFlowLayout
+    func scrollViewWillEndDragging(_ scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
 
-extension AndesCarouselAbstractView: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: UIScreen.main.bounds.width, height: 288.0)
+        let layout = self.collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+
+        let cellWidthWithSpacing = layout.itemSize.width + layout.minimumLineSpacing
+
+        var offset = targetContentOffset.pointee
+
+        let index = (offset.x + scrollView.contentInset.left) / cellWidthWithSpacing
+        let roundedIndex = round(index)
+
+        offset = CGPoint(x: roundedIndex * cellWidthWithSpacing - scrollView.contentInset.left, y: scrollView.contentInset.top)
+
+        targetContentOffset.pointee = offset
     }
 }

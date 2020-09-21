@@ -35,7 +35,9 @@
 
     NSArray *constraints = @[
         [carousel.heightAnchor constraintEqualToConstant:100],
-        [carousel.widthAnchor constraintEqualToConstant:400],
+//        [carousel.widthAnchor constraintEqualToConstant: 200],
+        [carousel.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor],
+        [carousel.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor]
     ];
     [NSLayoutConstraint activateConstraints: constraints];
 }
@@ -69,8 +71,9 @@
     return stackView;
 }
 
+
 - (NSInteger)numberOfItems {
-    return 10;
+    return 5;
 }
 
 - (UIView * _Nonnull)andesCarouselWithCellForItemAt:(NSIndexPath * _Nonnull)indexPath {

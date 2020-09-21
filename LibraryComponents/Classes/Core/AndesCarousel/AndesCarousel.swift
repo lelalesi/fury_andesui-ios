@@ -89,7 +89,8 @@ public extension AndesCarousel {
 
 extension AndesCarousel: AndesCarouselViewDelegate {
     public func numberOfItems() -> Int {
-        delegate?.numberOfItems() ?? 0
+        #warning("Ver para cuando tengo mas de un carrousel numberOfItems(carousel: AndesCarousel)")
+        return delegate?.numberOfItems() ?? 0
     }
 
     public func andesCarousel(cellForItemAt indexPath: IndexPath) -> UIView {
